@@ -16,9 +16,10 @@
       (3) 具體作法
   
       A. 把三次要打的不同內容設定成不同字串，例如：
-        var txt01 = 'Consultant'
-        var txt11 = 'Value Creator'
-        var txt21 = 'Language Learner
+        
+          var txt01 = 'Consultant'
+          var txt11 = 'Value Creator'
+          var txt21 = 'Language Learner
         
       B. 用 t 來紀錄當前打的內容是哪一組，如果 button (id 是 #demo-button)被按到，先把內容清空再傳入新的 t
       /* button on click event */
