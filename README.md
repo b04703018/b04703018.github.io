@@ -58,6 +58,29 @@
          沒想到 setTimeout()裡的第一個參數傳的不是函式名稱，而是類似一個字串，所以要傳入 t 就要以
               setTimeout("typeWriter(" + t + ")", speed)  <- 將 typeWriter(t) 寫成一個 String
          的形式。寫這裡的時候卡了很久。
+         
+     D. 覺得使用者可能不會想點 "What's more" 的按鈕，這樣寫這個功能就沒用了... 所以決定讓打字效果跑完之後模擬滑鼠從上面經過一樣閃一下
+         
+        /* blink functions: mock hover effect */
+        
+        /* 加上 hover 時會添加的 class */
+        function blink_on() {
+            var btn = $('#demo-button')
+            btn.addClass('button-blink')
+        }
+
+        /* 移除 hover 時會添加的 class */
+        function blink_off() {
+            var btn = $('#demo-button')
+            btn.removeClass('button-blink')
+        }
+
+        /* 先 blink_on，500 ms 之後執行 blink_off */
+        function blink_button() {
+            blink_on()
+            setTimeout(blink_off, 500)
+        }
+
 
 5. 把固定的圖片改成動態的 carousel
 
