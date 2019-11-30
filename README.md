@@ -8,9 +8,12 @@
 3. 把聯絡資料處從 form 的形式改成顯示電子郵件和電話號碼
 
 4. 把原本固定的標題改成動態的 typing effect
-  (1) 參考 w3cshools 的說明：https://www.w3schools.com/howto/howto_js_typewriter.asp
-  (2) w3cshools 提供的 code 打完一次文字就不會再改動，但我想要透過點擊 "What's more" 的按鈕來打出新的文字
-  (3) 具體作法
+  
+      (1) 參考 w3cshools 的說明：https://www.w3schools.com/howto/howto_js_typewriter.asp
+  
+      (2) w3cshools 提供的 code 打完一次文字就不會再改動，但我想要透過點擊 "What's more" 的按鈕來打出新的文字
+  
+      (3) 具體作法
   
       A. 把三次要打的不同內容設定成不同字串，例如：
         var txt01 = 'Consultant'
