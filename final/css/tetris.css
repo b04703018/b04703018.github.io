@@ -1,0 +1,278 @@
+.color-purple_pv {
+    /*color: #000000;
+    background: #000000;
+    border: 3px rgb(235, 178, 243) solid;*/
+    color: rgba(0, 0, 0, 0);
+    background: #000000;
+    /*border: 1px rgb(189, 193, 252) solid;*/
+    border: 2px rgb(85, 85, 85) solid;
+    -webkit-box-shadow: inset 0px 0px 0px 2px rgb(235, 178, 243);
+    -moz-box-shadow: inset 0px 0px 0px 2px rgb(235, 178, 243);
+    box-shadow: inset 0px 0px 0px 2px rgb(235, 178, 243);
+}
+
+.color-cyan_pv {
+    /*color: #000000;
+    background: #000000;
+    border: 3px rgb(118, 230, 245) solid;*/
+    color: rgba(0, 0, 0, 0);
+    background: #000000;
+    /*border: 1px rgb(189, 193, 252) solid;*/
+    border: 2px rgb(85, 85, 85) solid;
+    -webkit-box-shadow: inset 0px 0px 0px 2px rgb(118, 230, 245);
+    -moz-box-shadow: inset 0px 0px 0px 2px rgb(118, 230, 245);
+    box-shadow: inset 0px 0px 0px 2px rgb(118, 230, 245);
+}
+
+.color-blue_pv {
+    /*color: #000000;
+    background: #000000;
+    border: 3px rgb(189, 193, 252) solid;*/
+    color: rgba(0, 0, 0, 0);
+    background: #000000;
+    /*border: 1px rgb(189, 193, 252) solid;*/
+    border: 2px rgb(85, 85, 85) solid;
+    -webkit-box-shadow: inset 0px 0px 0px 2px rgb(189, 193, 252);
+    -moz-box-shadow: inset 0px 0px 0px 2px rgb(189, 193, 252);
+    box-shadow: inset 0px 0px 0px 2px rgb(189, 193, 252);
+}
+
+.color-red_pv {
+    /*color: #000000;
+    background: #000000;
+    border: 3px rgb(247, 163, 163) solid;*/
+    color: rgba(0, 0, 0, 0);
+    background: #000000;
+    /*border: 1px rgb(247, 163, 163) solid;*/
+    border: 2px rgb(85, 85, 85) solid;
+    -webkit-box-shadow: inset 0px 0px 0px 2px rgb(247, 163, 163);
+    -moz-box-shadow: inset 0px 0px 0px 2px rgb(247, 163, 163);
+    box-shadow: inset 0px 0px 0px 2px rgb(247, 163, 163);
+}
+
+.color-green_pv {
+    /*color: #000000;
+    background: #000000;
+    border: 3px rgb(118, 201, 136) solid;*/
+    color: rgba(0, 0, 0, 0);
+    background: #000000;
+    /*border: 1px rgb(118, 201, 136) solid;*/
+    border: 2px rgb(85, 85, 85) solid;
+    -webkit-box-shadow: inset 0px 0px 0px 2px rgb(118, 201, 136);
+    -moz-box-shadow: inset 0px 0px 0px 2px rgb(118, 201, 136);
+    box-shadow: inset 0px 0px 0px 2px rgb(118, 201, 136);
+}
+
+.color-yellow_pv {
+    /*color: #000000;
+    background: #000000;
+    border: 3px rgb(253, 245, 134) solid;*/
+    color: rgba(0, 0, 0, 0);
+    background: #000000;
+    /*border: 1px rgb(253, 245, 134) solid;*/
+    border: 2px rgb(85, 85, 85) solid;
+    -webkit-box-shadow: inset 0px 0px 0px 2px rgb(253, 245, 134);
+    -moz-box-shadow: inset 0px 0px 0px 2px rgb(253, 245, 134);
+    box-shadow: inset 0px 0px 0px 2px rgb(253, 245, 134);
+}
+
+.color-orange_pv {
+    /*color: #000000;
+    background: #000000;
+    border: 3px rgb(248, 203, 151) solid;*/
+    color: rgba(0, 0, 0, 0);
+    background: #000000;
+    /*border: 1px rgb(248, 203, 151) solid;*/
+    border: 2px rgb(85, 85, 85) solid;
+    -webkit-box-shadow: inset 0px 0px 0px 2px rgb(248, 203, 151);
+    -moz-box-shadow: inset 0px 0px 0px 2px rgb(248, 203, 151);
+    box-shadow: inset 0px 0px 0px 2px rgb(248, 203, 151);
+}
+
+.color-gray {
+    color: rgb(0, 0, 0);
+    background: rgb(0, 0, 0);
+    border: 2px #555555 solid;
+}
+
+.color-purple {
+    /*color: rgb(235, 178, 243);
+    background: rgb(235, 178, 243);
+    border: 2px #CCCCCC solid;*/
+    color: rgba(0, 0, 0, 0);
+    background: #871198;
+    /*border: 1px rgb(189, 193, 252) solid;*/
+    border: 1px rgb(85, 85, 85) solid;
+    -webkit-box-shadow: inset 0px 0px 0px 2px rgb(235, 178, 243);
+    -moz-box-shadow: inset 0px 0px 0px 2px rgb(235, 178, 243);
+    box-shadow: inset 0px 0px 0px 2px rgb(235, 178, 243);
+}
+
+.color-cyan {
+    /*color: rgb(118, 230, 245);
+    background: rgb(118, 230, 245);
+    border: 2px #CCCCCC solid;*/
+    color: rgba(0, 0, 0, 0);
+    background: #11717d;
+    /*border: 1px rgb(189, 193, 252) solid;*/
+    border: 1px rgb(85, 85, 85) solid;
+    -webkit-box-shadow: inset 0px 0px 0px 2px rgb(118, 230, 245);
+    -moz-box-shadow: inset 0px 0px 0px 2px rgb(118, 230, 245);
+    box-shadow: inset 0px 0px 0px 2px rgb(118, 230, 245);
+}
+
+.color-blue {
+    /*color: rgb(189, 193, 252);
+    background: rgb(189, 193, 252);
+    border: 2px #CCCCCC solid;*/
+    color: rgba(0, 0, 0, 0);
+    background: rgb(77, 84, 181);
+    /*border: 1px rgb(189, 193, 252) solid;*/
+    border: 1px rgb(85, 85, 85) solid;
+    -webkit-box-shadow: inset 0px 0px 0px 2px rgb(189, 193, 252);
+    -moz-box-shadow: inset 0px 0px 0px 2px rgb(189, 193, 252);
+    box-shadow: inset 0px 0px 0px 2px rgb(189, 193, 252);
+}
+
+.color-orange {
+    /*color: rgb(248, 203, 151);
+    background: rgb(248, 203, 151);
+    border: 2px #CCCCCC solid;*/
+    color: rgba(0, 0, 0, 0);
+    background: #a06016;
+    /*border: 1px rgb(248, 203, 151) solid;*/
+    border: 1px rgb(85, 85, 85) solid;
+    -webkit-box-shadow: inset 0px 0px 0px 2px rgb(248, 203, 151);
+    -moz-box-shadow: inset 0px 0px 0px 2px rgb(248, 203, 151);
+    box-shadow: inset 0px 0px 0px 2px rgb(248, 203, 151);
+}
+
+.color-green {
+    /*color: rgb(118, 201, 136);
+    background: rgb(118, 201, 136);
+    border: 2px #CCCCCC solid;*/
+    color: rgba(0, 0, 0, 0);
+    background: #207533;
+    /*border: 1px rgb(118, 201, 136) solid;*/
+    border: 1px rgb(85, 85, 85) solid;
+    -webkit-box-shadow: inset 0px 0px 0px 2px rgb(118, 201, 136);
+    -moz-box-shadow: inset 0px 0px 0px 2px rgb(118, 201, 136);
+    box-shadow: inset 0px 0px 0px 2px rgb(118, 201, 136);
+}
+
+.color-red {
+    /*color: rgb(247, 163, 163);
+    background: rgb(247, 163, 163);
+    border: 2px #CCCCCC solid;*/
+    color: rgba(0, 0, 0, 0);
+    background: #a90707;
+    /*border: 1px rgb(247, 163, 163) solid;*/
+    border: 1px rgb(85, 85, 85) solid;
+    -webkit-box-shadow: inset 0px 0px 0px 2px rgb(247, 163, 163);
+    -moz-box-shadow: inset 0px 0px 0px 2px rgb(247, 163, 163);
+    box-shadow: inset 0px 0px 0px 2px rgb(247, 163, 163);
+}
+
+.color-yellow {
+    /*color: rgb(253, 245, 134);
+    background: rgb(253, 245, 134);
+    border: 2px #CCCCCC solid;*/
+    color: rgba(0, 0, 0, 0);
+    background: #a59b10;
+    /*border: 1px rgb(253, 245, 134) solid;*/
+    border: 1px rgb(85, 85, 85) solid;
+    -webkit-box-shadow: inset 0px 0px 0px 2px rgb(253, 245, 134);
+    -moz-box-shadow: inset 0px 0px 0px 2px rgb(253, 245, 134);
+    box-shadow: inset 0px 0px 0px 2px rgb(253, 245, 134);
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.col-form-label {
+    font-family: 'Quicksand', sans-serif;
+    color: #00BCD4;
+}
+
+.jumbotron {
+    font-family: 'QuickSand', sans-serif;
+    background: #07b0ce;
+}
+
+body {
+    background: #000000;
+}
+
+.preview_table {
+    padding-left: 50px;
+    height: 100px;
+    width: 100px
+}
+
+p {
+    font-family: 'Quicksand', sans-serif;
+    color: #00BCD4;
+}
+
+hr {
+    background: skyblue
+}
+
+button {
+    background: #000000;
+    border-radius: 10%;
+    color: skyblue;
+}
+
+div.mode-button {
+    border: white solid;
+    color: white;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    border-radius: 10%;
+    display: inline-block;
+}
+
+.text_black {
+    color: black
+}
+
+.text_blue {
+    color: skyblue
+}
+
+.mode_on {
+    color: skyblue !important;
+    border: skyblue solid !important;
+}
+
+.mode_off {
+    color: gray !important;
+    border: gray solid !important;
+}
+
+input {
+    background: black !important;
+    border: 1px skyblue solid !important;
+    text-align: center !important;
+    color: skyblue !important;
+}
+
+.menu {
+    color: #00BCD4;
+    font-family: 'QuickSand';
+    padding-left: 10px;
+    padding-right: 10px;
+    white-space: nowrap;
+}
+
+.hide_menu {
+    visibility: hidden;
+}
+
+.show_menu {
+    visibility: visible;
+}
