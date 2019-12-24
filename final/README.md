@@ -146,17 +146,197 @@ Tetris 的主要目標是「消行」，也就是當落下的方塊佔滿其中�
     scrolldelay = setTimeout(controlScroll, 1500)
     ```
     
+    C. 懸浮視窗（hover 時顯示）
+    
+    CSS:
+    ```
+    .hide_menu { visibility: hidden; }
+    .show_menu { visibility: visible; }
+    ```
+    
+    JS:
+    ```
+    $("#menu_sign").hover(function() {
+        $("#menu_table").removeClass("hide_menu").addClass("show_menu")
+    }, function() {
+        $("#menu_table").removeClass("show_menu").addClass("hide_menu")
+    });
+    ```
     
     
+    D. 隨機序列
+    
+    在正式的 Tetris 遊戲裡，不同顏色方塊出現的順序不是完全隨機的，而是採七個一循環的方式，例如 [橘黃靛紫藍紅綠] [綠黃紫靛紅橘藍]，也因此雖然有時候會遇到連續出現兩個相同顏色的方塊，但一定不會有三個以上連續相同顏色方塊出現的的情形，為了滿足這個規則，要使用到 random 的方法。
+    
+    ```
+    var rand = (start, end) => {
+        var r
+        n = end - start + 1 //求亂數的範圍 
+        r = Math.random() * n // 放大
+        r = Math.floor(r) // 去除小數點
+        r += start // 位移
+        return r
+    }
+    
+    while (this_change_list.length < 7) {
+        var r = rand(0, 6)
+        while (this_change_list.includes(r)) {
+            r += 1
+            if (r > 6) { r = 0 }
+        }
+        this_change_list.push(r)
+    }
+    ```
+    
+    E. 加上/去除類別
+    
+    把方塊所在方格塗上不同顏色的方法，是根據目前方塊的所在位置設定 "color" 這個 attribute 的值，之後再依據此值調整 css 類別（如果直接調整 css 類別，會造成不同區塊更新顏色的時間有微小差異）
+     
+    HTML
+    ```
+    <td id="300" color="gray" class="color-gray">300</td>
+    ```
+    
+    CSS
+    ```
+    .color-gray {
+        color: rgb(0, 0, 0);
+        background: rgb(0, 0, 0);
+        border: 2px #5
+    }
+    
+    .color-blue {
+        color: rgba(0, 0, 0, 0);
+        background: rgb(77, 84, 181);
+        border: 1px rgb(85, 85, 85) solid;
+        -webkit-box-shadow: inset 0px 0px 0px 2px rgb(189, 193, 252);
+        -moz-box-shadow: inset 0px 0px 0px 2px rgb(189, 193, 252);
+        box-shadow: inset 0px 0px 0px 2px rgb(189, 193, 252);
+    }
+    ```
+    
+    JS
+    ```
+    // 經其他 function 判斷 now_color = "blue"
+    
+    // 調整 "color" 屬性
+    $("#" + p1).attr("color", now_color)
+    
+    // 根據 "color" 屬性調整 css 類別
+    if ($draw_block.attr("color") == "blue") {
+        $draw_block.removeClass("color-gray")
+        $draw_block.addClass("color-blue")
+    }
+    ```
     
     
+4. 特色亮點
+
+    除了傳統的 Tetris 玩法以外，我還加上了兩個可以疊加的模式：
+    
+    A. LIFE_IN_THE_SPACE
+    
+    這個模式把空白鍵的功能改成向上移動，可以幫忙爭取一點時間 :)，另外我是故意設計成可以向上飛超出視窗一點點
+    
+    ```
+    // for game mode life_in_the_space
+    var space_for_life_in_the_space = () => {
+
+        // 更新顏色
+        clear_to_gray()
+
+        // 不能向上超出視窗太多，至少有一格方塊要在第一行以下
+        var [num_p1, num_p2, num_p3, num_p4] = test_num(1)
+        if ((num_p1 % 100) > 0 && (num_p2 % 100) > 0 && (num_p3 % 100) > 0 && (num_p4 % 100) > 0) {
+            now_focus -= 1
+        }
+        
+        // 調整 css 類別
+        draw_now_type(0)
+        
+        // 印出 "moon-walk"
+        console.log("moon-walk", now_focus)
+
+    }
+    ```
+    
+    B. ANTI-GRAVITY
+    
+    這個模式是把視窗上下倒轉，讓方塊往上移動，具體做法是把遊戲的主 table 裡每一格的 id 和對應格的 id 調換過來 (比如最上面一列的 id 全部換成最下面一列的 id)
+    
+    ```
+    // for game mode anti_gravity
+    var anti_gravity = () => {
+
+        for (let a = 0; a <= 9; a++) {
+            for (let b = 0; b <= 19; b++) {
+
+                var check_block = "",
+                    change_id = ""
+                if (b < 10) {
+                    check_block = a + "0" + b
+                    change_id = a + "" + (19 - b)
+                } else {
+                    check_block = a + "" + b
+                    change_id = a + "0" + (19 - b)
+                }
+                
+                // 先把每一格根據原始 id 加上一個 "id_[][][]" 的屬性
+                let $check_block = $("#" + check_block)
+                $check_block.addClass("id_" + change_id)
+
+            }
+        }
+
+        for (let a = 0; a <= 9; a++) {
+            for (let b = 0; b <= 19; b++) {
+
+                var check_block = "",
+                    change_id = ""
+                if (b < 10) {
+                    check_block = a + "0" + b
+                    change_id = a + "" + (19 - b)
+                } else {
+                    check_block = a + "" + b
+                    change_id = a + "0" + (19 - b)
+                }
+
+                let $check_block = $(".id_" + change_id)
+                console.log(check_block, $check_block)
+                $check_block.removeClass("id_" + change_id)
+                
+                // 把每一格根據 "id_[][][]" 的屬性設定新 id
+                $check_block.attr("id", change_id)
+
+            }
+        }
+
+    }
+    ```
+
+5. 總結
+
+    這次專案因為做的是鍵盤操控的遊戲，在做的過程中剛好補足了上課沒有提到的鍵盤控制部分，另外也接觸到了設定重複執行、延遲執行的 setInterval 和 setTimeout，很有收穫。
+    
+    一開始還在腦中構想時，還想說要讓方塊是獨立的 html element，然後透過調整 margin 來讓在視窗中移動，結果後來靈機一動用了 table 來解決，應該是精巧許多的做法，沒想到平常都拿來放文字數字的 table 實在是妙用無窮呢！（為了讓大家都知道他是 table，我特別把裡面填上每一格的 id，反白起來就會看到＾＾）
+    
+    最後希望大家喜歡這個專案，如果之後也想玩的話建議把程式碼抄到自己電腦裡，因為 Tetris 這個遊戲是有版權，需要付費給官方的哈哈（要是這個專案被認為有商業用途就...我也不知道怎麼辦），但是可以時不時來看一下，或許會有更新喔 :)
     
     
+    b04703018 Ringo Chang 2019.12.24
     
-    
-    
-    
-    
+    EOF
     
 
-4. 特色亮點
+
+
+
+
+
+
+
+
+
+
+
+
