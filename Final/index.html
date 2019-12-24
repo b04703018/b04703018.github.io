@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="zh-TW">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa|Dosis|Josefin+Sans|Quicksand|Roboto&display=swap" rel="stylesheet">
+
+    <!-- 引用自已定義的CSS -->
+    <link rel="stylesheet" href="./css/tetris.css">
+    <title>More than Tetris</title>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- 標題 -->
+        <div class="row">
+            <div class="col-sm-10" style="padding: 0px;">
+                <div class="jumbotron" style="height: 120px;">
+                    <h1 class="display-4" style="margin-top: -30px;">More than Tetris</h1>
+                </div>
+            </div>
+        </div>
+
+        <!-- 表單 -->
+        <div class="row">
+            <div class="col">
+                <form>
+                    <!--
+                        <div class="form-group row">
+                        <label for="cleared_rows" class="col-sm-1 col-form-label">Cleared Rows:</label>
+                        <div class="col-sm-3">
+                            <input type="number" class="form-control" id="cleared_rows" value="0" disabled>
+                        </div>
+
+                        <label for="now_level" class="col-sm-1 col-form-label">Level:</label>
+                        <div class="col-sm-2">
+                            <input type="number" class="form-control" id="now_level" value="0" disabled>
+                        </div>
+
+                        <label for="game_speed" class="col-sm-1 col-form-label">Speed:</label>
+                        <div class="col-sm-2">
+                            <input type="number" class="form-control" id="game_speed" value="0" disabled>
+                        </div>
+                    </div>
+                    -->
+
+                    <div class="form-group row">
+                        <div class="col-sm-2" style="padding-left: 0px;">
+
+                            <label for="cleared_rows" class="col-form-label">Cleared Rows:</label>
+                            <input type="number" class="form-control" id="cleared_rows" value="0" disabled>
+
+                            <label for="now_level" class="col-form-label">Level:</label>
+                            <input type="number" class="form-control" id="now_level" value="0" disabled>
+
+                            <label for="game_mode" class="col-form-label">Mode:</label>
+                            <br>
+                            <div style="margin-bottom:-10px;">
+                                <span id="span_mode" style="color:skyblue;"></span>
+                            </div>
+                            <br>
+                            <div id="mode_A" class="mode_off mode-button">
+                                <span>A</span>
+                            </div>
+                            <div id="mode_S" class="mode_off mode-button">
+                                <span>S</span>
+                            </div>
+
+                            <hr>
+
+                            <p>Score:</p>
+                            <table class="preview_table" style="text-align: center; white-space: nowrap;">
+                                <tr>
+                                    <td color="gray" class="color-gray"></td>
+                                    <td color="gray" class="color-gray"></td>
+                                    <td color="gray" class="color-gray"></td>
+                                    <td color="gray" class="color-gray"></td>
+                                </tr>
+                                <tr>
+                                    <td id="score" colspan="4" color="gray" class="color-gray" style="font-family: QuickSand; font-weight: bold;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td color="gray" class="color-gray"></td>
+                                    <td color="gray" class="color-gray"></td>
+                                    <td color="gray" class="color-gray"></td>
+                                    <td color="gray" class="color-gray"></td>
+                                </tr>
+                            </table>
+
+                            <p style="margin-top:10px;">Hold:</p>
+                            <table class="preview_table">
+                                <tr>
+                                    <td id="n0_00" color="gray" class="color-gray"></td>
+                                    <td id="n0_10" color="gray" class="color-gray"></td>
+                                    <td id="n0_20" color="gray" class="color-gray"></td>
+                                    <td id="n0_30" color="gray" class="color-gray"></td>
+                                </tr>
+                                <tr>
+                                    <td id="n0_01" color="gray" class="color-gray"></td>
+                                    <td id="n0_11" color="gray" class="color-gray"></td>
+                                    <td id="n0_21" color="gray" class="color-gray"></td>
+                                    <td id="n0_31" color="gray" class="color-gray"></td>
+                                </tr>
+                                <tr>
+                                    <td id="n0_02" color="gray" class="color-gray"></td>
+                                    <td id="n0_12" color="gray" class="color-gray"></td>
+                                    <td id="n0_22" color="gray" class="color-gray"></td>
+                                    <td id="n0_32" color="gray" class="color-gray"></td>
+                                </tr>
+                                <tr>
+                                    <td id="n0_03" color="gray" class="color-gray"></td>
+                                    <td id="n0_13" color="gray" class="color-gray"></td>
+                                    <td id="n0_23" color="gray" class="color-gray"></td>
+                                    <td id="n0_33" color="gray" class="color-gray"></td>
+                                </tr>
+                            </table>
+                            <br>
+                        </div>
+                        <div class="col-sm-6" style="margin-left:0px;margin-right:0px;">
+
+                            <div id="outer-main">
+
+                                <table style="height:600px;width:350px;margin-left:auto;margin-right:auto;">
+                                    <tr>
+                                        <td id="000" color="gray" class="color-gray">000</td>
+                                        <td id="100" color="gray" class="color-gray">100</td>
+                                        <td id="200" color="gray" class="color-gray">200</td>
+                                        <td id="300" color="gray" class="color-gray">300</td>
+                                        <td id="400" color="gray" class="color-gray">400</td>
+                                        <td id="500" color="gray" class="color-gray">500</td>
+                                        <td id="600" color="gray" class="color-gray">600</td>
+                                        <td id="700" color="gray" class="color-gray">700</td>
+                                        <td id="800" color="gray" class="color-gray">800</td>
+                                        <td id="900" color="gray" class="color-gray">900</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="001" color="gray" class="color-gray">001</td>
+                                        <td id="101" color="gray" class="color-gray">101</td>
+                                        <td id="201" color="gray" class="color-gray">201</td>
+                                        <td id="301" color="gray" class="color-gray">301</td>
+                                        <td id="401" color="gray" class="color-gray">401</td>
+                                        <td id="501" color="gray" class="color-gray">501</td>
+                                        <td id="601" color="gray" class="color-gray">601</td>
+                                        <td id="701" color="gray" class="color-gray">701</td>
+                                        <td id="801" color="gray" class="color-gray">801</td>
+                                        <td id="901" color="gray" class="color-gray">901</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="002" color="gray" class="color-gray">002</td>
+                                        <td id="102" color="gray" class="color-gray">102</td>
+                                        <td id="202" color="gray" class="color-gray">202</td>
+                                        <td id="302" color="gray" class="color-gray">302</td>
+                                        <td id="402" color="gray" class="color-gray">402</td>
+                                        <td id="502" color="gray" class="color-gray">502</td>
+                                        <td id="602" color="gray" class="color-gray">602</td>
+                                        <td id="702" color="gray" class="color-gray">702</td>
+                                        <td id="802" color="gray" class="color-gray">802</td>
+                                        <td id="902" color="gray" class="color-gray">902</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="003" color="gray" class="color-gray">003</td>
+                                        <td id="103" color="gray" class="color-gray">103</td>
+                                        <td id="203" color="gray" class="color-gray">203</td>
+                                        <td id="303" color="gray" class="color-gray">303</td>
+                                        <td id="403" color="gray" class="color-gray">403</td>
+                                        <td id="503" color="gray" class="color-gray">503</td>
+                                        <td id="603" color="gray" class="color-gray">603</td>
+                                        <td id="703" color="gray" class="color-gray">703</td>
+                                        <td id="803" color="gray" class="color-gray">803</td>
+                                        <td id="903" color="gray" class="color-gray">903</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="004" color="gray" class="color-gray">004</td>
+                                        <td id="104" color="gray" class="color-gray">104</td>
+                                        <td id="204" color="gray" class="color-gray">204</td>
+                                        <td id="304" color="gray" class="color-gray">304</td>
+                                        <td id="404" color="gray" class="color-gray">404</td>
+                                        <td id="504" color="gray" class="color-gray">504</td>
+                                        <td id="604" color="gray" class="color-gray">604</td>
+                                        <td id="704" color="gray" class="color-gray">704</td>
+                                        <td id="804" color="gray" class="color-gray">804</td>
+                                        <td id="904" color="gray" class="color-gray">904</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="005" color="gray" class="color-gray">005</td>
+                                        <td id="105" color="gray" class="color-gray">105</td>
+                                        <td id="205" color="gray" class="color-gray">205</td>
+                                        <td id="305" color="gray" class="color-gray">305</td>
+                                        <td id="405" color="gray" class="color-gray">405</td>
+                                        <td id="505" color="gray" class="color-gray">505</td>
+                                        <td id="605" color="gray" class="color-gray">605</td>
+                                        <td id="705" color="gray" class="color-gray">705</td>
+                                        <td id="805" color="gray" class="color-gray">805</td>
+                                        <td id="905" color="gray" class="color-gray">905</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="006" color="gray" class="color-gray">006</td>
+                                        <td id="106" color="gray" class="color-gray">106</td>
+                                        <td id="206" color="gray" class="color-gray">206</td>
+                                        <td id="306" color="gray" class="color-gray">306</td>
+                                        <td id="406" color="gray" class="color-gray">406</td>
+                                        <td id="506" color="gray" class="color-gray">506</td>
+                                        <td id="606" color="gray" class="color-gray">606</td>
+                                        <td id="706" color="gray" class="color-gray">706</td>
+                                        <td id="806" color="gray" class="color-gray">806</td>
+                                        <td id="906" color="gray" class="color-gray">906</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="007" color="gray" class="color-gray">007</td>
+                                        <td id="107" color="gray" class="color-gray">107</td>
+                                        <td id="207" color="gray" class="color-gray">207</td>
+                                        <td id="307" color="gray" class="color-gray">307</td>
+                                        <td id="407" color="gray" class="color-gray">407</td>
+                                        <td id="507" color="gray" class="color-gray">507</td>
+                                        <td id="607" color="gray" class="color-gray">607</td>
+                                        <td id="707" color="gray" class="color-gray">707</td>
+                                        <td id="807" color="gray" class="color-gray">807</td>
+                                        <td id="907" color="gray" class="color-gray">907</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="008" color="gray" class="color-gray">008</td>
+                                        <td id="108" color="gray" class="color-gray">108</td>
+                                        <td id="208" color="gray" class="color-gray">208</td>
+                                        <td id="308" color="gray" class="color-gray">308</td>
+                                        <td id="408" color="gray" class="color-gray">408</td>
+                                        <td id="508" color="gray" class="color-gray">508</td>
+                                        <td id="608" color="gray" class="color-gray">608</td>
+                                        <td id="708" color="gray" class="color-gray">708</td>
+                                        <td id="808" color="gray" class="color-gray">808</td>
+                                        <td id="908" color="gray" class="color-gray">908</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="009" color="gray" class="color-gray">009</td>
+                                        <td id="109" color="gray" class="color-gray">109</td>
+                                        <td id="209" color="gray" class="color-gray">209</td>
+                                        <td id="309" color="gray" class="color-gray">309</td>
+                                        <td id="409" color="gray" class="color-gray">409</td>
+                                        <td id="509" color="gray" class="color-gray">509</td>
+                                        <td id="609" color="gray" class="color-gray">609</td>
+                                        <td id="709" color="gray" class="color-gray">709</td>
+                                        <td id="809" color="gray" class="color-gray">809</td>
+                                        <td id="909" color="gray" class="color-gray">909</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="010" color="gray" class="color-gray">010</td>
+                                        <td id="110" color="gray" class="color-gray">110</td>
+                                        <td id="210" color="gray" class="color-gray">210</td>
+                                        <td id="310" color="gray" class="color-gray">310</td>
+                                        <td id="410" color="gray" class="color-gray">410</td>
+                                        <td id="510" color="gray" class="color-gray">510</td>
+                                        <td id="610" color="gray" class="color-gray">610</td>
+                                        <td id="710" color="gray" class="color-gray">710</td>
+                                        <td id="810" color="gray" class="color-gray">810</td>
+                                        <td id="910" color="gray" class="color-gray">910</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="011" color="gray" class="color-gray">011</td>
+                                        <td id="111" color="gray" class="color-gray">111</td>
+                                        <td id="211" color="gray" class="color-gray">211</td>
+                                        <td id="311" color="gray" class="color-gray">311</td>
+                                        <td id="411" color="gray" class="color-gray">411</td>
+                                        <td id="511" color="gray" class="color-gray">511</td>
+                                        <td id="611" color="gray" class="color-gray">611</td>
+                                        <td id="711" color="gray" class="color-gray">711</td>
+                                        <td id="811" color="gray" class="color-gray">811</td>
+                                        <td id="911" color="gray" class="color-gray">911</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="012" color="gray" class="color-gray">012</td>
+                                        <td id="112" color="gray" class="color-gray">112</td>
+                                        <td id="212" color="gray" class="color-gray">212</td>
+                                        <td id="312" color="gray" class="color-gray">312</td>
+                                        <td id="412" color="gray" class="color-gray">412</td>
+                                        <td id="512" color="gray" class="color-gray">512</td>
+                                        <td id="612" color="gray" class="color-gray">612</td>
+                                        <td id="712" color="gray" class="color-gray">712</td>
+                                        <td id="812" color="gray" class="color-gray">812</td>
+                                        <td id="912" color="gray" class="color-gray">912</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="013" color="gray" class="color-gray">013</td>
+                                        <td id="113" color="gray" class="color-gray">113</td>
+                                        <td id="213" color="gray" class="color-gray">213</td>
+                                        <td id="313" color="gray" class="color-gray">313</td>
+                                        <td id="413" color="gray" class="color-gray">413</td>
+                                        <td id="513" color="gray" class="color-gray">513</td>
+                                        <td id="613" color="gray" class="color-gray">613</td>
+                                        <td id="713" color="gray" class="color-gray">713</td>
+                                        <td id="813" color="gray" class="color-gray">813</td>
+                                        <td id="913" color="gray" class="color-gray">913</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="014" color="gray" class="color-gray">014</td>
+                                        <td id="114" color="gray" class="color-gray">114</td>
+                                        <td id="214" color="gray" class="color-gray">214</td>
+                                        <td id="314" color="gray" class="color-gray">314</td>
+                                        <td id="414" color="gray" class="color-gray">414</td>
+                                        <td id="514" color="gray" class="color-gray">514</td>
+                                        <td id="614" color="gray" class="color-gray">614</td>
+                                        <td id="714" color="gray" class="color-gray">714</td>
+                                        <td id="814" color="gray" class="color-gray">814</td>
+                                        <td id="914" color="gray" class="color-gray">914</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="015" color="gray" class="color-gray">015</td>
+                                        <td id="115" color="gray" class="color-gray">115</td>
+                                        <td id="215" color="gray" class="color-gray">215</td>
+                                        <td id="315" color="gray" class="color-gray">315</td>
+                                        <td id="415" color="gray" class="color-gray">415</td>
+                                        <td id="515" color="gray" class="color-gray">515</td>
+                                        <td id="615" color="gray" class="color-gray">615</td>
+                                        <td id="715" color="gray" class="color-gray">715</td>
+                                        <td id="815" color="gray" class="color-gray">815</td>
+                                        <td id="915" color="gray" class="color-gray">915</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="016" color="gray" class="color-gray">016</td>
+                                        <td id="116" color="gray" class="color-gray">116</td>
+                                        <td id="216" color="gray" class="color-gray">216</td>
+                                        <td id="316" color="gray" class="color-gray">316</td>
+                                        <td id="416" color="gray" class="color-gray">416</td>
+                                        <td id="516" color="gray" class="color-gray">516</td>
+                                        <td id="616" color="gray" class="color-gray">616</td>
+                                        <td id="716" color="gray" class="color-gray">716</td>
+                                        <td id="816" color="gray" class="color-gray">816</td>
+                                        <td id="916" color="gray" class="color-gray">916</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="017" color="gray" class="color-gray">017</td>
+                                        <td id="117" color="gray" class="color-gray">117</td>
+                                        <td id="217" color="gray" class="color-gray">217</td>
+                                        <td id="317" color="gray" class="color-gray">317</td>
+                                        <td id="417" color="gray" class="color-gray">417</td>
+                                        <td id="517" color="gray" class="color-gray">517</td>
+                                        <td id="617" color="gray" class="color-gray">617</td>
+                                        <td id="717" color="gray" class="color-gray">717</td>
+                                        <td id="817" color="gray" class="color-gray">817</td>
+                                        <td id="917" color="gray" class="color-gray">917</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="018" color="gray" class="color-gray">018</td>
+                                        <td id="118" color="gray" class="color-gray">118</td>
+                                        <td id="218" color="gray" class="color-gray">218</td>
+                                        <td id="318" color="gray" class="color-gray">318</td>
+                                        <td id="418" color="gray" class="color-gray">418</td>
+                                        <td id="518" color="gray" class="color-gray">518</td>
+                                        <td id="618" color="gray" class="color-gray">618</td>
+                                        <td id="718" color="gray" class="color-gray">718</td>
+                                        <td id="818" color="gray" class="color-gray">818</td>
+                                        <td id="918" color="gray" class="color-gray">918</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="019" color="gray" class="color-gray">019</td>
+                                        <td id="119" color="gray" class="color-gray">119</td>
+                                        <td id="219" color="gray" class="color-gray">219</td>
+                                        <td id="319" color="gray" class="color-gray">319</td>
+                                        <td id="419" color="gray" class="color-gray">419</td>
+                                        <td id="519" color="gray" class="color-gray">519</td>
+                                        <td id="619" color="gray" class="color-gray">619</td>
+                                        <td id="719" color="gray" class="color-gray">719</td>
+                                        <td id="819" color="gray" class="color-gray">819</td>
+                                        <td id="919" color="gray" class="color-gray">919</td>
+                                    </tr>
+                                </table>
+
+                            </div>
+
+                        </div>
+                        <div class="col-sm-2">
+
+                            <p id="menu_sign" style="border: 1px skyblue solid;
+                                text-align: center;
+                                width: 30px;
+                                border-radius: 5px;
+                                margin-top: -10px;
+                                margin-bottom: 5px;">?</p>
+
+                            <table id="menu_table" class="preview_table hide_menu" style="text-align: center;">
+                                <tr>
+                                    <td colspan="2" color="gray" class="color-gray menu" style="color: skyblue;font-family: QuickSand; font-weight: bold;">[&lt/&gt]</td>
+                                    <td colspan="2" color="gray" class="color-gray menu">left/right</td>
+                                    <td colspan="2" color="gray" class="color-gray menu" style="color: skyblue;font-family: QuickSand; font-weight: bold;">[p]</td>
+                                    <td colspan="2" color="gray" class="color-gray menu">pause</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" color="gray" class="color-gray" style="color: skyblue;font-family: QuickSand; font-weight: bold;">[^/z]</td>
+                                    <td colspan="2" color="gray" class="color-gray menu">turn</td>
+                                    <td colspan="2" color="gray" class="color-gray" style="color: skyblue;font-family: QuickSand; font-weight: bold;">[n]</td>
+                                    <td colspan="2" color="gray" class="color-gray menu">new game</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" color="gray" class="color-gray" style="color: skyblue;font-family: QuickSand; font-weight: bold;">[Shift]</td>
+                                    <td colspan="2" color="gray" class="color-gray menu">hold</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" color="gray" class="color-gray" style="color: skyblue;font-family: QuickSand; font-weight: bold;">[Space]</td>
+                                    <td colspan="2" color="gray" class="color-gray menu">drop</td>
+                                </tr>
+                            </table>
+
+                            <p style="margin-top: 10px;margin-bottom: 5px;">Next 1:</p>
+                            <table class="preview_table">
+                                <tr>
+                                    <td id="n1_00" color="gray" class="color-gray"></td>
+                                    <td id="n1_10" color="gray" class="color-gray"></td>
+                                    <td id="n1_20" color="gray" class="color-gray"></td>
+                                    <td id="n1_30" color="gray" class="color-gray"></td>
+                                </tr>
+                                <tr>
+                                    <td id="n1_01" color="gray" class="color-gray"></td>
+                                    <td id="n1_11" color="gray" class="color-gray"></td>
+                                    <td id="n1_21" color="gray" class="color-gray"></td>
+                                    <td id="n1_31" color="gray" class="color-gray"></td>
+                                </tr>
+                                <tr>
+                                    <td id="n1_02" color="gray" class="color-gray"></td>
+                                    <td id="n1_12" color="gray" class="color-gray"></td>
+                                    <td id="n1_22" color="gray" class="color-gray"></td>
+                                    <td id="n1_32" color="gray" class="color-gray"></td>
+                                </tr>
+                                <tr>
+                                    <td id="n1_03" color="gray" class="color-gray"></td>
+                                    <td id="n1_13" color="gray" class="color-gray"></td>
+                                    <td id="n1_23" color="gray" class="color-gray"></td>
+                                    <td id="n1_33" color="gray" class="color-gray"></td>
+                                </tr>
+                            </table>
+                            <br>
+
+                            <p style="margin-top: -10px;margin-bottom: 5px;">Next 2:</p>
+                            <table class="preview_table">
+                                <tr>
+                                    <td id="n2_00" color="gray" class="color-gray"></td>
+                                    <td id="n2_10" color="gray" class="color-gray"></td>
+                                    <td id="n2_20" color="gray" class="color-gray"></td>
+                                    <td id="n2_30" color="gray" class="color-gray"></td>
+                                </tr>
+                                <tr>
+                                    <td id="n2_01" color="gray" class="color-gray"></td>
+                                    <td id="n2_11" color="gray" class="color-gray"></td>
+                                    <td id="n2_21" color="gray" class="color-gray"></td>
+                                    <td id="n2_31" color="gray" class="color-gray"></td>
+                                </tr>
+                                <tr>
+                                    <td id="n2_02" color="gray" class="color-gray"></td>
+                                    <td id="n2_12" color="gray" class="color-gray"></td>
+                                    <td id="n2_22" color="gray" class="color-gray"></td>
+                                    <td id="n2_32" color="gray" class="color-gray"></td>
+                                </tr>
+                                <tr>
+                                    <td id="n2_03" color="gray" class="color-gray"></td>
+                                    <td id="n2_13" color="gray" class="color-gray"></td>
+                                    <td id="n2_23" color="gray" class="color-gray"></td>
+                                    <td id="n2_33" color="gray" class="color-gray"></td>
+                                </tr>
+                            </table>
+                            <br>
+
+                            <p style="margin-top: -10px;margin-bottom: 5px;">Next 3:</p>
+                            <table class="preview_table">
+                                <tr>
+                                    <td id="n3_00" color="gray" class="color-gray"></td>
+                                    <td id="n3_10" color="gray" class="color-gray"></td>
+                                    <td id="n3_20" color="gray" class="color-gray"></td>
+                                    <td id="n3_30" color="gray" class="color-gray"></td>
+                                </tr>
+                                <tr>
+                                    <td id="n3_01" color="gray" class="color-gray"></td>
+                                    <td id="n3_11" color="gray" class="color-gray"></td>
+                                    <td id="n3_21" color="gray" class="color-gray"></td>
+                                    <td id="n3_31" color="gray" class="color-gray"></td>
+                                </tr>
+                                <tr>
+                                    <td id="n3_02" color="gray" class="color-gray"></td>
+                                    <td id="n3_12" color="gray" class="color-gray"></td>
+                                    <td id="n3_22" color="gray" class="color-gray"></td>
+                                    <td id="n3_32" color="gray" class="color-gray"></td>
+                                </tr>
+                                <tr>
+                                    <td id="n3_03" color="gray" class="color-gray"></td>
+                                    <td id="n3_13" color="gray" class="color-gray"></td>
+                                    <td id="n3_23" color="gray" class="color-gray"></td>
+                                    <td id="n3_33" color="gray" class="color-gray"></td>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <footer style="color:aliceblue">
+                    <p> copyright &copy; 2019 NTU Front End Programming </p>
+                    <p> This project is intended for self recreational and non-commercial uses </p>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- 引用自己寫的 js -->
+    <script src="./js/tetris.js"></script>
+</body>
+
+</html>
