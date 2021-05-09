@@ -2539,8 +2539,16 @@ footer .footer-nav li a:hover {
 
 .button-blink {
     background: white !important;
-    border: 1px solid #6cbb23 !important;
-    color: #6cbb23 !important;
+    border: 1px solid #d02d2d !important;
+    color: #d02d2d !important;
+    /*border: 1px solid #6cbb23 !important;
+    color: #6cbb23 !important;*/
+}
+
+.button-uniqlo:hover {
+    background: white !important;
+    border: 1px solid #d02d2d !important;
+    color: #d02d2d !important;
 }
 
 p.p_language {
